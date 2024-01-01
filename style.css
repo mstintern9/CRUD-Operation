@@ -48,6 +48,10 @@ th,td{
     opacity: 0.9;
 }
 
+button{
+    width: 15%;
+}
+
 .form{
     display: flex;
 }
