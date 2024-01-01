@@ -21,6 +21,7 @@ addtask.addEventListener("click", function () {
     itemsArray.push(inputval);
     input.value = "";
     showtask();
+    console.log(itemsArray)
   }
 });
 
