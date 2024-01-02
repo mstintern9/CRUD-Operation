@@ -1,53 +1,112 @@
-body,html{
-    background: linear-gradient(#31B7C2,#7BC393);
-    background-attachment:fixed;
-    height: 100%;
-    width: 70%;
-    display: flex;
-    flex: 1;
-    flex-direction: column;
-    margin: 0px 8px;
-    padding: 0px 25px;
-    
+body,
+html {
+  background-color: #f8f8ff;
+  background-attachment: fixed;
+  height: 80%;
+  width: 90%;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  margin-left: 80px;
 }
 
-
-th,td{
-    border: 1px solid black;
-    width: auto;
-    height: auto;
-    padding: 10px;
+h2 {
+  text-align: center;
+  color: #646681;
+  font-size: xx-large;
+  font-weight: 1000;
 }
 
-.table-content{
-    margin: 5px;
-    padding: 5px;
-    border-spacing: 0px;
-    align-content: center;   
+.form-input {
+  flex: 1;
+  background-color: #8f8f9845;
+  padding: 2px;
+  margin: 2px;
+  font-size: 1.2rem;
+  color: rgb(52, 50, 50);
+  border-radius: 10px;
+  border: none;
+  height: 30px;
 }
 
-.form-input{
-    flex: 2;
-    background-color:whitesmoke;
-    padding: 2px;
-    border: 1px solid black;
-    margin: 2px;
-    font-size: 1.2rem;
-    color: black;
-
+::placeholder {
+  font-size: larger;
+  text-align: start;
+  font-weight: bolder;
+  padding: 10px;
 }
 
-.button{
-    flex:0.3;
-    background-color:rgb(26, 108, 130);
-    color: white;
+.button {
+  flex: 0.1;
+  background-color: #6370f0;
+  color: #ecedf6;
+  border-radius: 5px;
+  border: none;
 }
-.button:hover{
-    background-color: cadetblue;
-    border: none;
-    opacity: 0.9;
+.button:hover {
+  border: none;
+  opacity: 0.9;
 }
 
-.form{
-    display: flex;
+.form {
+  display: flex;
+  margin: 20px;
+  border-spacing: 50px;
+}
+ul {
+  background-color: #ffffff;
+  border-radius: 10px;
+  margin: 15px;
+}
+
+ul li {
+  list-style: none;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.list-container {
+  display: flex;
+  flex-direction: column;
+  background-color: #ecedf6;
+  margin: 20px;
+  padding: 10px 0px;
+  font-size: large;
+  border-radius: 10px;
+}
+
+.task-container {
+  margin: 40px;
+  padding: 10px;
+  border-radius: 20px;
+}
+
+.btn1 {
+  background-color: #eeeeee;
+  color: #585858;
+  border-radius: 5px;
+  border: none;
+  padding: 8px;
+  margin: 0px 5px;
+  flex: 0.03;
+}
+
+.btn2 {
+  background-color: #eeeeee;
+  color: #585858;
+  border-radius: 5px;
+  border: none;
+  padding: 8px;
+  margin: 0px 2px;
+  flex: 0.03;
+}
+
+.btn3 {
+  display: flex;
+}
+
+.text {
+  width: 90%;
+  overflow-wrap: break-word;
 }

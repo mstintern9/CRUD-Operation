@@ -7,6 +7,8 @@ function displayDate() {
 }
 displayDate();
 
+document.getElementById("mylist").style.backgroundColor = "#f8f8ff";
+
 // Getting Elements by id reference
 let input = document.getElementById("input-text");
 let addtask = document.getElementById("addtask");
@@ -21,22 +23,31 @@ addtask.addEventListener("click", function () {
     itemsArray.push(inputval);
     input.value = "";
     showtask();
-    console.log(itemsArray)
+    console.log(itemsArray);
   }
 });
 
 // It will show the table row with buttons and tasks
 function showtask() {
   let html = "";
-  let mytable = document.getElementById("myTable");
+
+  let mytable = document.getElementById("mylist");
   itemsArray.forEach((item, index) => {
-    html += ` <tr>
-    <th>${index + 1}</th>
-    <td>${item}</td>
-    <td> <button class="button" onclick="edittask(${index})" id="edit"><i class="fa-regular fa-pen-to-square"></i></button> <button class="button" id="del" onclick="deletetask(${index})" ><i class="fa-solid fa-trash"></i></button> </td>
-  </tr>`;
+    html += ` 
+    <ul class="main-list">
+      <li>
+       <div class = "text">${item}</div>
+        <div class="btn3"><button class="btn2" id="del" onclick="deletetask(${index})" ><i class="fa-solid fa-trash"></i></button> <button class="btn1" onclick="edittask(${index})" id="edit"><i class="fa-solid fa-pen"></i></button> </div>
+      </li>
+    </ul>`;
   });
+  // Used this so task container can have same color as body
   mytable.innerHTML = html;
+  if (!html) {
+    mytable.style.backgroundColor = "#f8f8ff";
+  } else {
+    mytable.style.backgroundColor = "#ecedf6";
+  }
 }
 
 // Edit Task
