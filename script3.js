@@ -72,6 +72,7 @@ savetask.addEventListener("click", () => {
   showtask();
 });
 
+// Delete task function will create a new array and will iterate through each element and when the index is matched that element is not stored in newArray
 function deletetask(index) {
   let newArray = [];
   for (let i = 0; i < itemsArray.length; i++) {
