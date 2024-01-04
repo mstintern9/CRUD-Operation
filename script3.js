@@ -35,9 +35,9 @@ function showtask() {
   itemsArray.forEach((item, index) => {
     html += ` 
     <ul class="main-list">
-      <li>
-       <div class = "text">${item}</div>
-        <div class="btn3"><button class="btn2" id="del" onclick="deletetask(${index})" ><i class="fa-solid fa-trash"></i></button> <button class="btn1" onclick="edittask(${index})" id="edit"><i class="fa-solid fa-pen"></i></button> </div>
+      <li id="list">
+       <div class="text">${item}</div>
+        <div class="btn3"><button class="btn2 deletebtn" id="del" onclick="deletetask(${index})" ><i class="fa-solid fa-trash"></i></button> <button class="btn1" onclick="edittask(${index})" id="edit"><i class="fa-solid fa-pen"></i></button> </div>
       </li>
     </ul>`;
   });
@@ -72,8 +72,13 @@ savetask.addEventListener("click", () => {
   showtask();
 });
 
-// Delete task
 function deletetask(index) {
-  itemsArray.splice(index, 1);
+  let newArray = [];
+  for (let i = 0; i < itemsArray.length; i++) {
+    if (index !== i) {
+      newArray[newArray.length] = itemsArray[i];
+    }
+  }
+  itemsArray = newArray;
   showtask();
 }
