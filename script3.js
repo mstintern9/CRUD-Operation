@@ -7,73 +7,73 @@ function displayDate() {
 }
 displayDate();
 
-document.getElementById("mylist").style.backgroundColor = "#f8f8ff";
+document.getElementById("myList").style.backgroundColor = "#f8f8ff";
 
 // Getting Elements by id reference
 let input = document.getElementById("input-text");
-let addtask = document.getElementById("addtask");
+let addTask = document.getElementById("addTask");
 let itemsArray = [];
 
 // For add Button that will add the push the task into empty array
-addtask.addEventListener("click", function () {
-  inputval = input.value;
-  if (!inputval) {
+addTask.addEventListener("click", function () {
+  inputVal = input.value;
+  if (!inputVal) {
     alert("Please enter a task");
   } else {
-    itemsArray.push(inputval);
+    itemsArray.push(inputVal);
     input.value = "";
-    showtask();
+    showTask();
     console.log(itemsArray);
   }
 });
 
 // It will show the table row with buttons and tasks
-function showtask() {
+function showTask() {
   let html = "";
 
-  let mytable = document.getElementById("mylist");
+  let myTable = document.getElementById("myList");
   itemsArray.forEach((item, index) => {
     html += ` 
     <ul class="main-list">
       <li id="list">
        <div class="text">${item}</div>
-        <div class="btn3"><button class="btn2 deletebtn" id="del" onclick="deletetask(${index})" ><i class="fa-solid fa-trash"></i></button> <button class="btn1" onclick="edittask(${index})" id="edit"><i class="fa-solid fa-pen"></i></button> </div>
+        <div class="btn3"><button class="btn2 deletebtn" id="del" onclick="deleteTask(${index})" ><i class="fa-solid fa-trash"></i></button> <button class="btn1" onclick="editTask(${index})" id="edit"><i class="fa-solid fa-pen"></i></button> </div>
       </li>
     </ul>`;
   });
   // Used this so task container can have same color as body
-  mytable.innerHTML = html;
+  myTable.innerHTML = html;
   if (!html) {
-    mytable.style.backgroundColor = "#f8f8ff";
+    myTable.style.backgroundColor = "#f8f8ff";
   } else {
-    mytable.style.backgroundColor = "#ecedf6";
+    myTable.style.backgroundColor = "#ecedf6";
   }
 }
 
 // Edit Task
-function edittask(index) {
-  let saveindex = document.getElementById("saveindex");
-  let addtask = document.getElementById("addtask");
-  let savetask = document.getElementById("savetask");
-  saveindex.value = index;
+function editTask(index) {
+  let saveIndex = document.getElementById("saveIndex");
+  let addTask = document.getElementById("addTask");
+  let saveTask = document.getElementById("saveTask");
+  saveIndex.value = index;
   input.value = itemsArray[index];
-  addtask.style.display = "none";
-  savetask.style.display = "block";
+  addTask.style.display = "none";
+  saveTask.style.display = "block";
 }
 
 // save index is used to save the corresponding value to input
-let savetask = document.getElementById("savetask");
-savetask.addEventListener("click", () => {
-  let saveindex = document.getElementById("saveindex").value;
-  itemsArray[saveindex] = input.value;
-  addtask.style.display = "block";
-  savetask.style.display = "none";
+let saveTask = document.getElementById("saveTask");
+saveTask.addEventListener("click", () => {
+  let saveIndex = document.getElementById("saveIndex").value;
+  itemsArray[saveIndex] = input.value;
+  addTask.style.display = "block";
+  saveTask.style.display = "none";
   input.value = "";
-  showtask();
+  showTask();
 });
 
 // Delete task function will create a new array and will iterate through each element and when the index is matched that element is not stored in newArray
-function deletetask(index) {
+function deleteTask(index) {
   let newArray = [];
   for (let i = 0; i < itemsArray.length; i++) {
     if (index !== i) {
@@ -81,5 +81,5 @@ function deletetask(index) {
     }
   }
   itemsArray = newArray;
-  showtask();
+  showTask();
 }
