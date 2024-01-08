@@ -13,6 +13,7 @@ document.getElementById("myList").style.backgroundColor = "#f8f8ff";
 let input = document.getElementById("input-text");
 let addTask = document.getElementById("addTask");
 let itemsArray = [];
+let index = 0;
 
 // For add Button that will add the push the task into empty array
 addTask.addEventListener("click", function () {
@@ -50,26 +51,36 @@ function showTask() {
   }
 }
 
-// Edit Task
+// EditTask function to show save task button as block and to set the Attribute to saveIndex
 function editTask(index) {
-  let saveIndex = document.getElementById("saveIndex");
+  let input = document.getElementById("input-text");
+  let saveIndex = index; // Set saveIndex to the provided index
   let addTask = document.getElementById("addTask");
   let saveTask = document.getElementById("saveTask");
-  saveIndex.value = index;
   input.value = itemsArray[index];
+  input.setAttribute("data-hidden", saveIndex); // Set the data-hidden attribute to saveIndex
   addTask.style.display = "none";
   saveTask.style.display = "block";
 }
 
-// save index is used to save the corresponding value to input
-let saveTask = document.getElementById("saveTask");
-saveTask.addEventListener("click", () => {
-  let saveIndex = document.getElementById("saveIndex").value;
-  itemsArray[saveIndex] = input.value;
+// Function to handle saveTask action
+function saveTaskFunction(index) {
+  let input = document.getElementById("input-text");
+  let saveTask = document.getElementById("saveTask");
+  let addTask = document.getElementById("addTask");
+  itemsArray[index] = input.value;
   addTask.style.display = "block";
   saveTask.style.display = "none";
   input.value = "";
   showTask();
+}
+
+// Usage of the saveTask event listener with the saveIndex
+let saveTask = document.getElementById("saveTask");
+saveTask.addEventListener("click", () => {
+  let input = document.getElementById("input-text");
+  let saveIndex = input.getAttribute("data-hidden");
+  saveTaskFunction(saveIndex);
 });
 
 // Delete task function will create a new array and will iterate through each element and when the index is matched that element is not stored in newArray
