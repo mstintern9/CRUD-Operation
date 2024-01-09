@@ -24,7 +24,6 @@ addTask.addEventListener("click", function () {
     itemsArray.push(inputVal);
     input.value = "";
     showTask();
-    console.log(itemsArray);
   }
 });
 
@@ -58,7 +57,7 @@ function editTask(index) {
   let addTask = document.getElementById("addTask");
   let saveTask = document.getElementById("saveTask");
   input.value = itemsArray[index];
-  input.setAttribute("data-hidden", saveIndex); // Set the data-hidden attribute to saveIndex
+  input.setAttribute("data-hidden", saveIndex); // Set the data hidden attribute to saveIndex
   addTask.style.display = "none";
   saveTask.style.display = "block";
 }
@@ -75,7 +74,7 @@ function saveTaskFunction(index) {
   showTask();
 }
 
-// Usage of the saveTask event listener with the saveIndex
+// Use of the saveTask event listener with saveIndex
 let saveTask = document.getElementById("saveTask");
 saveTask.addEventListener("click", () => {
   let input = document.getElementById("input-text");
@@ -83,14 +82,20 @@ saveTask.addEventListener("click", () => {
   saveTaskFunction(saveIndex);
 });
 
-// Delete task function will create a new array and will iterate through each element and when the index is matched that element is not stored in newArray
+// DeleteTask function that takes index from itemsArray and then decrements the itemsArray length and deletes the index value
 function deleteTask(index) {
-  let newArray = [];
-  for (let i = 0; i < itemsArray.length; i++) {
-    if (index !== i) {
-      newArray[newArray.length] = itemsArray[i];
-    }
+  for (let i = index; i < itemsArray.length - 1; i++) {
+    index = i;
+    break;
   }
-  itemsArray = newArray;
+  if (index !== -1) {
+    for (let i = index; i < itemsArray.length - 1; i++) {
+      itemsArray[i] = itemsArray[i + 1];
+    }
+    itemsArray.length--;
+    addTask.style.display = "block";
+    saveTask.style.display = "none";
+    input.value = "";
+  }
   showTask();
 }
