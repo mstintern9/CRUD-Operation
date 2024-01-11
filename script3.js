@@ -12,17 +12,24 @@ document.getElementById("myList").style.backgroundColor = "#f8f8ff";
 // Getting Elements by id reference
 let input = document.getElementById("input-text");
 let addTask = document.getElementById("addTask");
+let datePicker = document.getElementById("datepicker");
 let itemsArray = [];
 let index = 0;
 
 // For add Button that will add the push the task into empty array
 addTask.addEventListener("click", function () {
   inputVal = input.value;
-  if (!inputVal) {
+  datePickerVal = datePicker.value;
+  if (!inputVal || !datePickerVal) {
     alert("Please enter a task");
   } else {
-    itemsArray.push(inputVal);
+    const itemArray = {
+      name: inputVal,
+      date: datePickerVal,
+    };
+    itemsArray.push(itemArray);
     input.value = "";
+    datePicker.value = "";
     showTask();
   }
 });
@@ -32,11 +39,12 @@ function showTask() {
   let html = "";
 
   let myTable = document.getElementById("myList");
-  itemsArray.forEach((item, index) => {
+  itemsArray.forEach((itemsArray, index) => {
     html += ` 
     <ul class="main-list">
       <li id="list">
-       <div class="text">${item}</div>
+       <span class="text">${itemsArray.name}</span>
+       <span class="date" >${itemsArray.date} </span>
         <div class="btn3"><button class="btn2 deletebtn" id="del" onclick="deleteTask(${index})" ><i class="fa-solid fa-trash"></i></button> <button class="btn1" onclick="editTask(${index})" id="edit"><i class="fa-solid fa-pen"></i></button> </div>
       </li>
     </ul>`;
@@ -56,7 +64,8 @@ function editTask(index) {
   let saveIndex = index; // Set saveIndex to the provided index
   let addTask = document.getElementById("addTask");
   let saveTask = document.getElementById("saveTask");
-  input.value = itemsArray[index];
+  input.value = itemsArray[index].name;
+  datePicker.value = itemsArray[index].date;
   input.setAttribute("data-hidden", saveIndex); // Set the data hidden attribute to saveIndex
   addTask.style.display = "none";
   saveTask.style.display = "block";
@@ -67,17 +76,18 @@ function saveTaskFunction(index) {
   let input = document.getElementById("input-text");
   let saveTask = document.getElementById("saveTask");
   let addTask = document.getElementById("addTask");
-  itemsArray[index] = input.value;
+  itemsArray[index].name = input.value;
+  itemsArray[index].date = datePicker.value;
   addTask.style.display = "block";
   saveTask.style.display = "none";
   input.value = "";
+  datePicker.value = "";
   showTask();
 }
 
 // Use of the saveTask event listener with saveIndex
 let saveTask = document.getElementById("saveTask");
 saveTask.addEventListener("click", () => {
-  let input = document.getElementById("input-text");
   let saveIndex = input.getAttribute("data-hidden");
   saveTaskFunction(saveIndex);
 });
@@ -95,6 +105,7 @@ function deleteTask(index) {
     itemsArray.length--;
     addTask.style.display = "block";
     saveTask.style.display = "none";
+    datePicker.value = "";
     input.value = "";
   }
   showTask();

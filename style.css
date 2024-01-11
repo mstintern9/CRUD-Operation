@@ -20,7 +20,7 @@ h2 {
 .form-input {
   flex: 1;
   background-color: #8f8f9845;
-  padding: 2px;
+  padding: 8px;
   margin: 2px;
   font-size: 1.2rem;
   color: rgb(52, 50, 50);
@@ -36,26 +36,33 @@ h2 {
   padding: 10px;
 }
 
-.button {
-  flex: 0.1;
+input.button {
   background-color: #6370f0;
   color: #ecedf6;
-  border-radius: 5px;
+  border-radius: 10px;
   border: none;
   flex: 0.2;
+  margin: 1px;
+  padding: 6px;
 }
+
+input#datepicker{
+  flex:0.6;
+}
+
 .button:hover {
+  background-color: #2536ce;
   border: none;
-  opacity: 0.9;
 }
 
 .form {
   display: flex;
   margin: 20px;
   border-spacing: 50px;
-  width: 40%;
+  width: 60%;
 }
-ul {
+
+ ul {
   background-color: #ffffff;
   border-radius: 10px;
   margin: 15px;
@@ -76,6 +83,7 @@ ul li {
   padding: 10px 0px;
   font-size: large;
   border-radius: 10px;
+  justify-self:center ;
 }
 
 .task-container {
@@ -109,6 +117,6 @@ ul li {
 }
 
 .text {
-  width: 90%;
+  width: 60%;
   overflow-wrap: break-word;
 }

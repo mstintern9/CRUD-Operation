@@ -8,6 +8,10 @@
       src="https://kit.fontawesome.com/36b288a2bf.js"
       crossorigin="anonymous"
     ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"
+    />
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
@@ -24,13 +28,25 @@
           placeholder="Add a Task"
           data-hidden=""
         />
-        <button id="addTask" class="button">Add Task</button>
-        <button id="saveTask" class="button" style="display: none">
-          Update Task
-        </button>
+
+        <input
+          id="datepicker"
+          type="date"
+          class="form-input"
+        />
+        <input id="addTask" type="button" class="button" value="Add Task" />
+
+        <input
+          id="saveTask"
+          type="button"
+          class="button"
+          value="Update Task"
+          style="display: none"
+        />
       </div>
       <div id="myList" class="list-container"></div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script src="script3.js"></script>
   </body>
 </html>
