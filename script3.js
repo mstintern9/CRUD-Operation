@@ -14,7 +14,6 @@ let input = document.getElementById("input-text");
 let addTask = document.getElementById("addTask");
 let datePicker = document.getElementById("datepicker");
 let itemsArray = [];
-let index = 0;
 
 // For add Button that will add the push the task into empty array
 addTask.addEventListener("click", function () {
@@ -26,26 +25,29 @@ addTask.addEventListener("click", function () {
     const itemArray = {
       name: inputVal,
       date: datePickerVal,
+      id: 0,
     };
+    let indexId = itemArray.id;
     itemsArray.push(itemArray);
     input.value = "";
     datePicker.value = "";
     showTask();
+    return indexId;
   }
 });
 
-// It will show the table row with buttons and tasks
+// It will show the lists with buttons and tasks
 function showTask() {
   let html = "";
 
   let myTable = document.getElementById("myList");
-  itemsArray.forEach((itemsArray, index) => {
+  itemsArray.forEach((itemsArray, indexId) => {
     html += ` 
     <ul class="main-list">
       <li id="list">
        <span class="text">${itemsArray.name}</span>
        <span class="date" >${itemsArray.date} </span>
-        <div class="btn3"><button class="btn2 deletebtn" id="del" onclick="deleteTask(${index})" ><i class="fa-solid fa-trash"></i></button> <button class="btn1" onclick="editTask(${index})" id="edit"><i class="fa-solid fa-pen"></i></button> </div>
+        <div class="btn3"><button class="btn2 deletebtn" id="del" onclick="deleteTask(${indexId})" ><i class="fa-solid fa-trash"></i></button> <button class="btn1" onclick="editTask(${indexId})" id="edit"><i class="fa-solid fa-pen"></i></button> </div>
       </li>
     </ul>`;
   });
@@ -96,7 +98,6 @@ saveTask.addEventListener("click", () => {
 function deleteTask(index) {
   for (let i = index; i < itemsArray.length - 1; i++) {
     index = i;
-    break;
   }
   if (index !== -1) {
     for (let i = index; i < itemsArray.length - 1; i++) {
