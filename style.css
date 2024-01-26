@@ -71,6 +71,7 @@ ul {
 ul li {
   list-style: none;
   padding: 20px;
+  margin: 5px;
   display: flex;
   justify-content: space-between;
 }
@@ -117,6 +118,27 @@ ul li {
 }
 
 .text {
+  font-size: 21px;
   width: 60%;
   overflow-wrap: break-word;
+}
+
+input[type="checkbox"] {
+  height: 1.5rem;
+  width: 1.5rem;
+  accent-color: #6370f0;
+}
+
+span.date {
+  width: 35%;
+  font-size: 21px;
+}
+
+span#status {
+  padding: 0 90px;
+}
+
+span#text {
+  min-width: 45%;
+  position: relative;
 }
