@@ -5,7 +5,6 @@ let saveTask = document.getElementById("saveTask");
 let datePicker = document.getElementById("datepicker");
 let itemsArray = [];
 let list = document.getElementById("list");
-let x = 0;
 
 // Display Date
 function displayDate() {
@@ -30,20 +29,24 @@ addTask.addEventListener("click", function () {
       name: inputVal,
       date: datePickerVal,
       status: "Pending",
-      id: x,
       check: false,
     };
+
+    let itemsIDs = itemsArray.map(items => items.id)
+
+    const idsArray = itemsIDs.length>0 ? itemsIDs : [0]
+    itemArray.id = Math.max(...idsArray)+1
     itemsArray.push(itemArray);
-    x = Math.max(...itemsArray.map((item) => item.id));
-    x++;
+    console.log("array after update",itemsArray)
     resetForm();
     showTask();
   }
 });
 
 // CHECK FUNCTION
-function checkButton(id) {
+function completeTask(id) {
   let divId = document.getElementById(`${id}`);
+  console.log('0-0-0-0-0', divId.childNodes)
   let textElement = divId.firstElementChild.firstElementChild.childNodes[1];
   let dateElement = divId.firstElementChild.firstElementChild.childNodes[5];
   let statusElement = divId.firstElementChild.firstElementChild.childNodes[3];
@@ -103,7 +106,7 @@ function showTask() {
           </button>
         </div>
       </li>
-      <input onclick="checkButton(${
+      <input onclick="completeTask(${
         itemsArray.id
       })" ${disableButton} type="checkbox"  ${
       itemsArray.check ? "checked" : ""
